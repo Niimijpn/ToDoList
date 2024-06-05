@@ -51,6 +51,7 @@ function Home() {
   type Post = {
     title: string;
     content: string;
+    createdAt: string;
   };
 
   return (
@@ -59,11 +60,7 @@ function Home() {
         <table>
           <tr>
             <td>{post.title}</td>
-            <td>{post.content}</td>
-          </tr>
-          <tr>
-            <td>Cell C</td>
-            <td>Cell D</td>
+            <td>{post.createdAt}</td>
           </tr>
         </table>
       ))}

@@ -5,5 +5,15 @@ import prisma from "@/lib/utils";
 export async function GET() {
   const posts = await prisma.post.findMany();
 
-  return NextResponse.json(posts);
+  const formattedPosts = posts.map((post) => ({
+    ...post,
+    createdAt: new Date(post.createdAt).toLocaleDateString("ja-JP", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      timeZone: "Asia/Tokyo",
+    }),
+  }));
+
+  return NextResponse.json(formattedPosts);
 }
